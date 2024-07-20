@@ -1,0 +1,31 @@
+.roomChatContainer {
+  width: 100dvw;
+  height: 100dvh;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+// input styles
+.inputContainer {
+  width: 70%;
+  background: #252525;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  .inputField {
+    background: #ffffff28;
+    border-radius: 10px;
+    width: 95%;
+    * {
+      border: transparent;
+      outline: transparent;
+      color: whitesmoke;
+    }
+  }
+}
+.sendButton {
+  cursor: pointer;
+}

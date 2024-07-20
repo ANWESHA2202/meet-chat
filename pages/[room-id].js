@@ -1,8 +1,7 @@
-import { useRouter } from "next/router";
+import RoomChat from "@/modules/MeetChat/RoomChat/RoomChat";
 
 const MeetChatRoom = () => {
-  const router = useRouter();
-  return <div>{router.query["room-id"]}</div>;
+  return <RoomChat />;
 };
 
 export default MeetChatRoom;

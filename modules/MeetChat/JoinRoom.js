@@ -1,4 +1,4 @@
-import CreateRoom from "@/components/room-creator/CreateRoom";
+import CreateRoom from "@/components/room-joiner/CreateRoom";
 
 const JoinRoom = () => {
   return (
