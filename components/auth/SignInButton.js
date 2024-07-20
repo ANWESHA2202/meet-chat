@@ -1,5 +1,8 @@
 import { auth, provider } from "@/firebase.config";
 import { signInWithPopup } from "firebase/auth";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 const SignInButton = () => {
   //event handler functions
@@ -7,9 +10,12 @@ const SignInButton = () => {
     /**
      * async event to let user sign in using google
      */
-    console.log(auth, provider);
-    const response = await signInWithPopup(auth, provider);
-    console.log(response);
+    try {
+      const response = await signInWithPopup(auth, provider);
+      cookies.set("auth-token", response.user.refreshToken);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div>
