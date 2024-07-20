@@ -1,25 +1,17 @@
-import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { generateUniqueMeetChatLinkId } from "../utils";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
-const fetchUniqueId = async () => {
-  return await generateUniqueMeetChatLinkId();
-};
 const CreateRoom = () => {
-  const queryClient = useQueryClient();
-
-  const { data: uniqueId, refetch } = useQuery({
-    queryKey: ["uniqueId"],
-    queryFn: fetchUniqueId,
-    staleTime: Infinity,
-    cacheTime: Infinity,
-    refetchOnWindowFocus: false,
-  });
+  const router = useRouter();
+  const [uniqueId, setUniqueId] = useState("");
 
   const regenerateIdMutation = useMutation({
-    mutationFn: fetchUniqueId,
+    mutationFn: generateUniqueMeetChatLinkId,
     onSuccess: (data) => {
-      queryClient.setQueryData(["uniqueId"], data);
-      console.log(data);
+      setUniqueId(data);
+      router.push(data);
     },
     onError: (err) => {
       console.log(err);
