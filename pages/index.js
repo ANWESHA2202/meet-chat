@@ -1,4 +1,4 @@
-import MeetChat from "@/modules/MeetChat";
+import MeetChat from "@/modules/MeetChat/MeetChat";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
