@@ -3,12 +3,15 @@ import styles from "@/modules/MeetChat/meetChat.module.scss";
 import { SendRounded } from "@mui/icons-material";
 import { useState } from "react";
 import { useJoinRoom } from "../hooks/useJoinRoom";
+import { useSendMessage } from "../hooks/useSendMessage";
+import { auth } from "@/firebase.config";
 
 const JoinExisting = () => {
   const [inputRoomId, setInputRoomId] = useState("");
   const [inputError, setInputError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const joinRoomMutation = useJoinRoom(setInputError, setIsLoading);
+  const sendMessageMutation = useSendMessage();
 
   //handler functions
   const handleOnChange = (value = "") => {
@@ -25,13 +28,17 @@ const JoinExisting = () => {
     setInputRoomId(val);
   };
 
-  const handleJoinRoom = () => {
+  const handleJoinRoom = async () => {
     if (inputRoomId?.length !== 12) {
       setInputError("Invalid room-id");
       return;
     }
-
-    joinRoomMutation.mutate(inputRoomId);
+    await sendMessageMutation.mutateAsync({
+      inputText: `${auth?.currentUser?.displayName} joined the chat room`,
+      messageType: 9,
+      roomId: inputRoomId,
+    });
+    await joinRoomMutation.mutateAsync(inputRoomId);
   };
 
   return (
