@@ -1,3 +1,13 @@
+//authContainer
+.authContainer {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
 //Join Room styles
 .joinRoom {
   height: 100dvh;

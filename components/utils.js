@@ -35,6 +35,10 @@ const generateSegment = (length) => {
   return result;
 };
 
+export const isInputTextValid = (text = "") => {
+  return /\S/.test(text);
+};
+
 export const isIdUnique = async (id) => {
   const q = query(collection(db, "uniqueIds"), where("id", "==", id));
   const querySnapshot = await getDocs(q);

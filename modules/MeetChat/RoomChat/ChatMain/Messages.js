@@ -28,6 +28,7 @@ const Messages = () => {
         messages?.map((message, idx) => {
           return <RenderChatBubble message={message} key={idx} />;
         })}
+      <hr id="hiddenhr" style={{ visibility: "hidden" }}></hr>
     </div>
   );
 };
