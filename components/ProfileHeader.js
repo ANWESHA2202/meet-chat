@@ -34,7 +34,7 @@ const ProfileHeader = ({ isWelcome = false }) => {
       });
     }
     await logoutMutation.mutateAsync(router?.query?.["room-id"]);
-    window?.location?.reload();
+    router.push("/");
   };
 
   useEffect(() => {
