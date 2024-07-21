@@ -63,3 +63,19 @@
   left: -5px;
   top: 0px;
 }
+.systemChatBubble {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  p {
+    width: 80%;
+    padding: 0.5rem;
+    background-color: teal;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-align: center;
+    margin: 1rem;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 10px 15px -3px,
+      rgba(255, 255, 255, 0.1) 0px 4px 6px -2px;
+  }
+}
