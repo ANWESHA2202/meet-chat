@@ -45,6 +45,28 @@
   display: grid;
   grid-template-columns: 30% 70%;
 }
+
+// user info container styles
+.userInfoContainer {
+  border: 1px solid rgba(245, 245, 245, 0.39);
+  padding: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(to top, #242424 0%, black 100%);
+}
+//accordion styles
+.Accordion {
+  background: transparent !important;
+  color: whitesmoke !important;
+  border: 1px solid rgba(245, 245, 245, 0.253);
+  border-radius: 15px !important;
+  margin-top: 1rem;
+  * {
+    background: transparent;
+    color: whitesmoke;
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
+}
 //messages container
 .messagesContainer {
   overflow-x: hidden;
