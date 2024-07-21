@@ -13,6 +13,7 @@ const SignInButton = () => {
     try {
       const response = await signInWithPopup(auth, provider);
       cookies.set("auth-token", response.user.refreshToken);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }

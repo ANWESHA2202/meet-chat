@@ -41,11 +41,11 @@ export const isIdUnique = async (id) => {
   return querySnapshot.empty;
 };
 
-const saveUniqueId = async (id) => {
-  await addDoc(collection(db, "uniqueIds"), { id });
+const saveUniqueId = async (id, createdBy = "") => {
+  await addDoc(collection(db, "uniqueIds"), { id, createdBy });
 };
 
-export const generateUniqueMeetChatLinkId = async () => {
+export const generateUniqueMeetChatLinkId = async (createdBy = "") => {
   let uniqueId;
   let isUnique = false;
 
@@ -58,7 +58,7 @@ export const generateUniqueMeetChatLinkId = async () => {
     isUnique = await isIdUnique(uniqueId);
   }
 
-  await saveUniqueId(uniqueId);
+  await saveUniqueId(uniqueId, createdBy);
   return uniqueId;
 };
 
