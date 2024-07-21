@@ -14,6 +14,7 @@ export const sendMessage = async (inputText, auth, roomId) => {
     mediaUrl: "",
     createdAt: serverTimestamp(),
     user: auth.currentUser.displayName,
+    authorizedBy: auth.currentUser.email,
     photoUrl: auth.currentUser.photoURL,
     roomId: roomId,
   });
@@ -43,7 +44,7 @@ const ChatInput = () => {
     sendMessageMutation.mutate();
   };
   return (
-    <div className={styles.inputContainer}>
+    <div className={styles.inputContainer} id="inputContainer">
       <TextField
         className={styles.inputField}
         multiline

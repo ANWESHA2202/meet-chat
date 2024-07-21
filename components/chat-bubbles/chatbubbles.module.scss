@@ -1,0 +1,66 @@
+/* chatBubble.module.scss */
+
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.chatBubble {
+  max-width: 60%;
+  min-width: 100px;
+  width: max-content;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  position: relative;
+  word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  background-color: #e5e5ea;
+  color: black;
+  font-size: 0.9em;
+  white-space: pre-wrap;
+
+  .title {
+    font-size: 0.7em;
+    margin-top: -10px;
+    margin-left: -3px;
+    font-weight: bold;
+    color: teal;
+    padding: 5px 0;
+  }
+  .timeStamp {
+    text-align: right;
+    font-size: 0.7em;
+    font-style: oblique;
+    margin: 5px 0 0;
+  }
+}
+
+.sent {
+  align-self: flex-end;
+}
+
+.received {
+  align-self: flex-start;
+}
+
+.chatBubble::after {
+  content: "";
+  position: absolute;
+  border-width: 10px;
+  border-style: solid;
+  z-index: -1;
+  border-color: #e5e5ea transparent transparent transparent;
+}
+
+.sent::after {
+  right: -5px;
+  top: 0px;
+}
+
+.received::after {
+  left: -5px;
+  top: 0px;
+}

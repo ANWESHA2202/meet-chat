@@ -45,6 +45,11 @@
   display: grid;
   grid-template-columns: 30% 70%;
 }
+//messages container
+.messagesContainer {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
 // input styles
 .inputContainer {
