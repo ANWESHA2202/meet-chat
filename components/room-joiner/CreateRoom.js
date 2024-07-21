@@ -22,10 +22,10 @@ const CreateRoom = () => {
     regenerateIdMutation.mutate();
   };
   return (
-    <div>
+    <>
       <h1>Your unique Meet-like ID: {uniqueId}</h1>
       <button onClick={regenerateId}>Generate New ID</button>
-    </div>
+    </>
   );
 };
 

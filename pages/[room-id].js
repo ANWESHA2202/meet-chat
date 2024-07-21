@@ -1,3 +1,4 @@
+"use client";
 import RoomChat from "@/modules/MeetChat/RoomChat/RoomChat";
 
 const MeetChatRoom = () => {

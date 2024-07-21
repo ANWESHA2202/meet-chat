@@ -14,7 +14,7 @@ const generateSegment = (length) => {
   return result;
 };
 
-const isIdUnique = async (id) => {
+export const isIdUnique = async (id) => {
   const q = query(collection(db, "uniqueIds"), where("id", "==", id));
   const querySnapshot = await getDocs(q);
   return querySnapshot.empty;

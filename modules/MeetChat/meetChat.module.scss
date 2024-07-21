@@ -1,3 +1,43 @@
+//Join Room styles
+.joinRoom {
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+  .inputField {
+    width: 100%;
+  }
+}
+
+//profile header styles
+.profileHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  img {
+    border-radius: 50%;
+    border: 1px dashed whitesmoke;
+  }
+  span {
+    font-size: 1.2em;
+    .displayName {
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+}
+
+//join existing styles
+.joinExisting {
+  * {
+    color: whitesmoke;
+  }
+}
+
 .roomChatContainer {
   width: 100dvw;
   height: 100dvh;
@@ -15,15 +55,15 @@
   bottom: 0;
   display: flex;
   justify-content: center;
-  .inputField {
-    background: #ffffff28;
-    border-radius: 10px;
-    width: 95%;
-    * {
-      border: transparent;
-      outline: transparent;
-      color: whitesmoke;
-    }
+}
+.inputField {
+  background: #ffffff28;
+  border-radius: 10px;
+  width: 95%;
+  * {
+    border: transparent !important;
+    outline: transparent !important;
+    color: whitesmoke !important;
   }
 }
 .sendButton {

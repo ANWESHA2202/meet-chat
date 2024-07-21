@@ -1,3 +1,4 @@
+"use client";
 import MeetChat from "@/modules/MeetChat/MeetChat";
 import { Inter } from "next/font/google";
 

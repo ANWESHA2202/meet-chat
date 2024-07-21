@@ -17,11 +17,7 @@ const SignInButton = () => {
       console.log(err);
     }
   };
-  return (
-    <div>
-      <button onClick={() => handleSignIn()}>Sign In With Google</button>
-    </div>
-  );
+  return <button onClick={() => handleSignIn()}>Sign In With Google</button>;
 };
 
 export default SignInButton;
