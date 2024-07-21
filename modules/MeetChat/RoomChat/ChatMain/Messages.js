@@ -1,5 +1,4 @@
 import { useMessages } from "@/components/hooks/useMessages";
-import { auth } from "@/firebase.config";
 import { useRouter } from "next/router";
 import RenderChatBubble from "./RenderChatBubble";
 import styles from "@/modules/MeetChat/meetChat.module.scss";

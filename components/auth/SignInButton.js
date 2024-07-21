@@ -1,4 +1,5 @@
 import { auth, provider } from "@/firebase.config";
+import { Button } from "@mui/material";
 import { signInWithPopup } from "firebase/auth";
 import Cookies from "universal-cookie";
 
@@ -18,7 +19,22 @@ const SignInButton = () => {
       console.log(err);
     }
   };
-  return <button onClick={() => handleSignIn()}>Sign In With Google</button>;
+  return (
+    <Button
+      variant="contained"
+      onClick={() => handleSignIn()}
+      startIcon={
+        <img
+          src="/googleLogo.webp"
+          height={30}
+          width={30}
+          style={{ borderRadius: "5px" }}
+        />
+      }
+    >
+      Sign In With Google
+    </Button>
+  );
 };
 
 export default SignInButton;
