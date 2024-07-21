@@ -14,7 +14,7 @@ import Cookies from "universal-cookie";
 
 const cookie = new Cookies();
 
-const logout = async () => {
+export const logout = async () => {
   signOut(auth);
   cookie.remove("auth-token");
 };
@@ -45,7 +45,7 @@ async function fetchMessageDocId(roomId, callback) {
   return unsubscribe;
 }
 
-const findRoomCreator = async (roomId, callback) => {
+export const findRoomCreator = async (roomId, callback) => {
   const roomsRef = collection(db, "uniqueIds");
   const q = query(roomsRef, where("id", "==", roomId));
 
