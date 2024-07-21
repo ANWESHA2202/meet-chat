@@ -78,15 +78,12 @@ export const useLogOut = (roomId) => {
   const router = useRouter();
   return useMutation({
     mutationFn: (roomId) => handleLogout(roomId),
-    onMutate: () => {
-      //   setIsLoading(true);
-    },
+    onMutate: () => {},
     onSuccess: () => {
       router.push("/");
     },
     onError: (error) => {
       console.error(error);
-      //   setInputError("An error occurred while joining the room.");
     },
   });
 };

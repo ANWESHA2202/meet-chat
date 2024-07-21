@@ -5,6 +5,7 @@ import { MenuItem, Popover, Skeleton } from "@mui/material";
 import { MoreVert } from "@mui/icons-material";
 import { useLogOut } from "./hooks/useLogOut";
 import { useRouter } from "next/router";
+import { useSendMessage } from "./hooks/useSendMessage";
 
 const ProfileHeader = ({ isWelcome = false }) => {
   const router = useRouter();
@@ -14,6 +15,7 @@ const ProfileHeader = ({ isWelcome = false }) => {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
   const logoutMutation = useLogOut(router?.query?.["room-id"]);
+  const sendMessageMutation = useSendMessage();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -24,7 +26,15 @@ const ProfileHeader = ({ isWelcome = false }) => {
   };
 
   const handleLogout = async () => {
-    logoutMutation.mutate(router?.query?.["room-id"]);
+    if (router?.query?.["room-id"]) {
+      await sendMessageMutation.mutateAsync({
+        inputText: `${auth?.currentUser?.displayName} left the chat`,
+        messageType: 9,
+        roomId: router?.query?.["room-id"],
+      });
+    }
+    await logoutMutation.mutateAsync(router?.query?.["room-id"]);
+    window?.location?.reload();
   };
 
   useEffect(() => {
