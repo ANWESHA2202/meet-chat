@@ -6,7 +6,7 @@ import moment from "moment";
 
 const TextChatBubble = ({ message }) => {
   let isReceiver = auth?.currentUser?.email !== message?.authorizedBy;
-  console.log(message.createdAt);
+
   return (
     <div className={styles.chatContainer}>
       <div
@@ -15,7 +15,7 @@ const TextChatBubble = ({ message }) => {
         }`}
       >
         <span className={styles.title}>
-          {isReceiver ? auth?.currentUser?.displayName : "You"}
+          {isReceiver ? message?.user : "You"}
         </span>
         <span>{message?.content}</span>
         <p className={styles.timeStamp}>

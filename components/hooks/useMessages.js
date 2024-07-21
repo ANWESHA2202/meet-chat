@@ -1,5 +1,5 @@
-// hooks/useMessages.js
-import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   collection,
   onSnapshot,
@@ -29,15 +29,31 @@ export const fetchMessages = (roomId, callback) => {
 };
 
 export const useMessages = (roomId) => {
+  const queryClient = useQueryClient();
+  const [unsubscribe, setUnsubscribe] = useState(null);
+
+  useEffect(() => {
+    if (!roomId) return;
+
+    const unsubscribe = fetchMessages(roomId, (messages) => {
+      queryClient.setQueryData(["messages", roomId], messages);
+    });
+
+    setUnsubscribe(() => unsubscribe);
+
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
+  }, [roomId, queryClient]);
+
   return useQuery({
     queryKey: ["messages", roomId],
-    queryFn: () =>
-      new Promise((resolve, reject) => {
-        const unsubscribe = fetchMessages(roomId, resolve);
-        return () => unsubscribe();
-      }),
+    queryFn: () => queryClient.getQueryData(["messages", roomId]) || [],
     staleTime: Infinity,
     cacheTime: Infinity,
     refetchOnWindowFocus: false,
+    enabled: !!roomId,
   });
 };

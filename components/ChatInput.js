@@ -10,7 +10,7 @@ const ChatInput = () => {
   const sendMessageMutation = useSendMessage(setInputText);
 
   const handleSendMessage = () => {
-    sendMessageMutation.mutate(inputText, 1);
+    sendMessageMutation.mutateAsync({ inputText, messageType: 1 });
   };
   return (
     <div className={styles.inputContainer} id="inputContainer">

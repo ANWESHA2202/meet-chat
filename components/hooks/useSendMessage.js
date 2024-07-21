@@ -29,7 +29,7 @@ export const useSendMessage = (callback = () => {}) => {
       if (!id && !roomId) {
         throw new Error("roomId is undefined");
       }
-      console.log(roomId, "room id");
+
       await sendMessage({
         inputText,
         messageType,
